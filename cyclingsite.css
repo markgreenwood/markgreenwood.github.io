@@ -1,13 +1,15 @@
 body {
 	width: 90%;
-	margin 0 auto;
+	margin: 0 auto;
 }
 
 .content {
 	overflow: auto;
+	height: 100%;
 }
 
-nav, footer, .feature {
+nav, footer, header, .feature {
+	text-align: center;
 	margin: 1%;
 }
 
@@ -15,6 +17,7 @@ nav, footer, .feature {
 	width: 31.3%;
 	float: left;
 	margin: 1%;
+	text-align: center;
 }
 
 .column3 {
