@@ -1,6 +1,8 @@
 body {
 	width: 90%;
 	margin: 0 auto;
+	background: url("images/CoreysBreakaway.jpg") no-repeat center center fixed;
+	background-size: cover;
 }
 
 .content {
@@ -8,15 +10,10 @@ body {
 	height: 100%;
 }
 
-.feature {
-	background-image: url("images/CoreysBreakaway.jpg");
-	background-size: cover;
-}
-
 nav, footer, header, .feature {
 	text-align: center;
 	margin: 1%;
-	opacity: 0.5;
+	opacity: 0.7;
 	font-family: Verdana;
 }
 
@@ -25,6 +22,7 @@ nav, footer, header, .feature {
 	float: left;
 	margin: 1%;
 	text-align: left;
+	opacity: 0.7;
 }
 
 .column3 {
@@ -32,7 +30,7 @@ nav, footer, header, .feature {
 }
 
 nav, footer {
-	background-color: cyan;
+	background-color: #efefef;
 	padding: 0.5em;
 }
 
@@ -45,5 +43,4 @@ article, .feature {
 li.navitem {
 	display: inline;
 	padding: 0.5em;
-	background-color: red;
 }

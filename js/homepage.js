@@ -16,3 +16,20 @@ for (i = 0; i < newsy_stuff.length; i++) {
 newsHeadlines += "</ul>";
 
 elNews.innerHTML = newsHeadlines;
+
+var elMarket = document.getElementById('market');
+var mkt_items = [
+	"Trek 5200 carbon road bike",
+	"Trek 820 mountain bike",
+	"Autographed jersey from Jakob Fuglsang",
+	]
+
+var itemsForMkt = "<h2>Marketplace</h2><ul>";
+
+for (i = 0; i < mkt_items.length; i++) {
+	itemsForMkt += "<li>" + mkt_items[i] + "</li>";
+}
+
+itemsForMkt += "</ul>";
+
+elMarket.innerHTML = itemsForMkt;
