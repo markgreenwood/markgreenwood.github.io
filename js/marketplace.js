@@ -1,29 +1,42 @@
-/* marketplace.js */
+/* Populate the marketplace with existing items */
 
-var item = new Object();
+var elMarket = document.getElementById('market');
 
-item.item = 'Trek 5200 road bike';
-item.sell_or_buy = 'Sell';
-item.description = '21" frame, Ultegra components, good condition, carbon fiber frame/fork';
-item.price = 1000;
-
-var itemArray = [];
-
-itemArray.push(item);
-
-item.item = 'Autographed "Shut Up, Legs!" jersey';
-item.sell_or_buy = 'Sell';
-item.description = 'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt';
-item.price = 200;
-
-itemArray.push(item);
-
-var itemTable = "<table><tr><th colspan=3>Marketplace</th></tr>";
-itemTable += "<tr><th>Buy/Sell</th><th>Item</th><th>Price</th>";
-
-for (i = 0; i < itemArray.length; i++) {
-	itemTable += "<tr><td>" + itemArray[i].sell_or_buy + "</td><td>" + 
-		itemArray[i].item + "</td><td>" + itemArray[i].price + "</td></tr>";
+function mktItem (item, sell_or_buy, description, price) {
+	this.item = item;
+	this.sell_or_buy = sell_or_buy;
+	this.description = description;
+	this.price = price;
 }
 
-itemTable += "</table>";
+var mktItemArray = [];
+
+mktItemArray.push(
+	new mktItem(
+		'Trek 5200 carbon road bike', 
+		'Sell', 
+		'21" frame, Ultegra components, good condition, carbon fiber frame/fork', 
+		1000
+		)
+	);
+
+mktItemArray.push(
+	new mktItem(
+		'Autographed "Shut Up, Legs!" jersey', 
+		'Sell', 
+		'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt', 
+		300
+		)
+	);
+
+var mktItemTable = "<table><tr><th colspan=3>Marketplace</th></tr>";
+mktItemTable += "<tr><th>Buy/Sell</th><th>Item</th><th>Price</th>";
+
+for (i = 0; i < mktItemArray.length; i++) {
+	mktItemTable += "<tr><td>" + mktItemArray[i].sell_or_buy + "</td><td>" + 
+		mktItemArray[i].item + "</td><td>" + "$" + mktItemArray[i].price + "</td></tr>";
+}
+
+mktItemTable += "</table>";
+
+elMarket.innerHTML = mktItemTable;

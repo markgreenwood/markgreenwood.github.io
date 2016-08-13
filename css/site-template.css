@@ -7,6 +7,7 @@ body {
 	margin: 0 auto;
 	/* background: url("images/CoreysBreakaway.jpg") no-repeat center center fixed;
 	background-size: cover; */
+	background-color: gray;
 }
 
 .content {
@@ -28,6 +29,7 @@ header {
 	float: left;
 	margin: 0.5%;
 	text-align: left;
+	background-color: lightgray;
 }
 
 .column3 {
@@ -36,14 +38,14 @@ header {
 }
 
 nav, footer {
-	background-color: #efefef;
+	background-color: lightgray;
 	padding: 0.5em;
 }
 
 article, .feature {
 	height: 20em;
 	margin-bottom: 0.5em;
-	background-color: #efefef;
+	background-color: lightgray;
 }
 
 .feature {
