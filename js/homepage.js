@@ -1,6 +1,6 @@
 /* Retrieve cycling news from Google */
 
-var elNews = document.getElementById('news')
+//var elNews = document.getElementById('news')
 var newsy_stuff = [
 	"Kristin Armstrong wins gold in Women's Time Trial", 
 	"Van Vleuten crashes in Women's Road Race",
@@ -15,21 +15,21 @@ for (i = 0; i < newsy_stuff.length; i++) {
 
 newsHeadlines += "</ul>";
 
-elNews.innerHTML = newsHeadlines;
+//elNews.innerHTML = newsHeadlines;
 
 var elMarket = document.getElementById('market');
 var mkt_items = [
-	"Trek 5200 carbon road bike",
-	"Trek 820 mountain bike",
-	"Autographed jersey from Jakob Fuglsang",
+	'Selling: Trek 5200 carbon road bike',
+	'Selling: Trek 820 mountain bike',
+	'Want to Buy: Autographed "Shut up, legs!" jersey from Jens Voigt',
 	]
 
-var itemsForMkt = "<h2>Marketplace</h2><ul>";
+var itemsForMkt = "<table><tr><th>Marketplace</th></tr>";
 
 for (i = 0; i < mkt_items.length; i++) {
-	itemsForMkt += "<li>" + mkt_items[i] + "</li>";
+	itemsForMkt += "<tr><td>" + mkt_items[i] + "</td></tr>";
 }
 
-itemsForMkt += "</ul>";
+itemsForMkt += "</table>";
 
 elMarket.innerHTML = itemsForMkt;
