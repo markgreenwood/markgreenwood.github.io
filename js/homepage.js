@@ -19,24 +19,6 @@ newsHeadlines += "</ul>";
 
 var elMarket = document.getElementById('market');
 
-/*
-var mkt_items = [
-	'Selling: Trek 5200 carbon road bike',
-	'Selling: Trek 820 mountain bike',
-	'Want to Buy: Autographed "Shut up, legs!" jersey from Jens Voigt',
-	]
-
-var itemsForMkt = "<table><tr><th>Marketplace</th></tr>";
-
-for (i = 0; i < mkt_items.length; i++) {
-	itemsForMkt += "<tr><td>" + mkt_items[i] + "</td></tr>";
-}
-
-itemsForMkt += "</table>";
-
-elMarket.innerHTML = itemsForMkt;
-*/
-
 var item1 = new Object();
 
 item1.item = 'Trek 5200 road bike';
