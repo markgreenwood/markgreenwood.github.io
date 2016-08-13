@@ -16,14 +16,14 @@ body {
 
 nav, footer, header, .feature {
 	text-align: center;
-	margin: 1%;
+	margin: 0.5%;
 	/* opacity: 0.7; */
 }
 
 .column1, .column2, .column3 {
-	width: 31.3%;
+	width: 49%;
 	float: left;
-	margin: 1%;
+	margin: 0.5%;
 	text-align: left;
 	/* opacity: 0.7; */
 }
@@ -39,7 +39,7 @@ nav, footer {
 
 article, .feature {
 	height: 20em;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 	background-color: #efefef;
 }
 
@@ -51,8 +51,15 @@ li.navitem {
 table {
 	border: 2px ridge;
 	border-collapse: collapse;
+	width: 100%;
 }
 
-td {
+td, th {
 	border: 2px ridge;
+	padding: 10px;
+}
+
+.newspic {
+	height: 100%;
+	float: left;
 }
