@@ -1,12 +1,14 @@
-/* Retrieve cycling news from Google */
+/* Populate cycling news with faux stories, will eventually pull from Google or some other news feed */
 
 function getRandomInt(min, max) {
+	// getRandomInt returns a random integer between min and max inclusive.
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max-min+1)) + min;
 }
 
 function newsItem(headline, image_url, article_text) {
+	// constructor function for a newsItem object
 	this.headline = headline;
 	this.image_url = image_url;
 	this.article_text = article_text;
@@ -30,6 +32,14 @@ newsItemArray.push(
 		)
 	);
 
+newsItemArray.push(
+	new newsItem(
+			'Greenwood out for the season after PIR crash',
+			'images/CrankItUpPIR.jpg',
+			'Mark Greenwood is out for the season after getting caught in a five-rider crash at PIR. As Greenwood was moving up on the outside, the rider to his right swerved into him and locked handlebars, causing the crash when he pulled away. Corey Nevers, Mark\'s teammate, was not involved in the crash and went on to win Tuesday evening.'
+		)
+	);
+
 var elNews = document.getElementById('news');
 var storyIndex = getRandomInt(0, newsItemArray.length-1);
 console.log("Fetching news story ", storyIndex);
@@ -38,23 +48,9 @@ var news = '';
 news += '<img class="newspic" src="' + newsItemArray[storyIndex].image_url + '"><h1>' + newsItemArray[storyIndex].headline + '</h1><p>' +
 	newsItemArray[storyIndex].article_text + '</p>';
 
-/*
-var newsy_stuff = [
-	"Kristin Armstrong wins gold in Women's Time Trial", 
-	"Van Vleuten crashes in Women's Road Race",
-	"Abbott fades in last 200m of Women's Road Race, cedes victory to van der Breggen",
-	];
-
-var newsHeadlines = "<h2>News</h2><ul>";
-
-for (i = 0; i < newsy_stuff.length; i++) {
-	newsHeadlines += "<li>" + newsy_stuff[i] + "</li>";
-}
-
-newsHeadlines += "</ul>";
-*/
-
 elNews.innerHTML = news;
+
+/* Populate the marketplace with existing items */
 
 var elMarket = document.getElementById('market');
 
@@ -75,7 +71,6 @@ mktItemArray.push(
 		1000
 		)
 	);
-
 
 mktItemArray.push(
 	new mktItem(
