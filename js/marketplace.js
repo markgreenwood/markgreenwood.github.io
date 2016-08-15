@@ -57,13 +57,13 @@ function addMktItem() {
 	console.log('Called addMktItem');
 	var mktTable = document.getElementById('mktItemTable');
 	var mktTableLastRow = mktItemTable.lastChild;
-	var newMktTableRow = createElement('tr');
-	var newItem = createElement('td');
-	var newItem_tn = createTextNode('Another item');
+	var newMktTableRow = document.createElement('tr');
+	var newItem = document.createElement('td');
+	var newItem_tn = document.createTextNode('Another item');
 	newItem.appendChild(newItem_tn);
-	newMktTableRow.appendChild(newItemItem);
-	mktTable.appendChild(newMktItemRow);
+	newMktTableRow.appendChild(newItem);
+	mktTable.appendChild(newMktTableRow);
 }
 
 elAddItem = document.getElementById('additembutton');
-elAddItem.addEventListener('click', function() { console.log('You clicked the Add Item button'); });
+elAddItem.addEventListener('click', function() { event.preventDefault(); addMktItem(); });
