@@ -20,7 +20,7 @@ newsItemArray.push(
 	new newsItem(
 			'Kristin Armstrong wins Cascade Classic time trial',
 			'images/K_Armstrong_TT_Finish.jpg',
-			'Kristin Armstrong won the Cascade Classic\'s Powell Butte time trial on Saturday, riding a blistering 31 mph pace. The time trial was an out-and-back 16 mile course.'
+			'Kristin Armstrong won the Cascade Classic\'s Skyliners time trial on Saturday, riding the out-and-back course at a blistering 27 mph pace.'
 		)
 	);
 
@@ -36,13 +36,15 @@ newsItemArray.push(
 	new newsItem(
 			'Greenwood out for the season after PIR crash',
 			'images/CrankItUpPIR.jpg',
-			'Mark Greenwood is out for the season after getting caught in a five-rider crash at PIR. As Greenwood was moving up on the outside, the rider to his right swerved into him and locked handlebars, causing the crash when he pulled away. Corey Nevers, Mark\'s teammate, was not involved in the crash and went on to win Tuesday evening.'
+			'Mark Greenwood is out for the season after getting caught in a five-rider crash at PIR. As Greenwood was moving up on the outside, the rider to his right swerved into him and locked handlebars, causing the crash when he pulled away. Corey Nevers, Greenwood\'s teammate, was not involved in the crash and went on to win Tuesday evening.'
 		)
 	);
 
 var elNews = document.getElementById('news');
 var storyIndex = getRandomInt(0, newsItemArray.length-1);
+/*
 console.log("Fetching news story ", storyIndex);
+*/
 
 var news = '';
 news += '<img class="newspic" src="' + newsItemArray[storyIndex].image_url + '"><h1>' + newsItemArray[storyIndex].headline + '</h1><p>' +

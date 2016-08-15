@@ -66,11 +66,15 @@ table {
 
 td, th {
 	border: 2px ridge;
-	padding: 10px;
+	padding: 5px;
 }
 
 .newspic {
 	height: 100%;
 	float: left;
 	margin-right: 0.5em;
+}
+
+#mkt-items, #race-table {
+	font-size: 75%;
 }

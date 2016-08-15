@@ -24,19 +24,19 @@ races += "<tr><th colspan=3>Races in " + selected_state + "</th></tr>";
 races += "<tr><th>Race</th><th>Race Date</th><th>Race Type</th>";
 
 for (i = 0; i < raceItemArray.length; i++) {
-	console.log(raceItemArray[i]);
+	//console.log(raceItemArray[i]);
 	if (raceItemArray[i].state == selected_state) {
-		console.log("Found an Oregon race");
+		//console.log("Found an Oregon race");
 		races += "<tr><td>" + raceItemArray[i].racename + "</td><td>" + raceItemArray[i].racedate + "</td><td>" + raceItemArray[i].racetype + "</td>";
 	}
 	else {
-		console.log("Race state: " + raceItemArray[i].state + " -- not a " + selected_state + " race");
+		//console.log("Race state: " + raceItemArray[i].state + " -- not a " + selected_state + " race");
 	}
 }
 
 races += "</table>";
 
-elRaces = document.getElementById('races');
+elRaces = document.getElementById('race-table');
 elRaces.innerHTML = races;
 
 /*
