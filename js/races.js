@@ -61,7 +61,15 @@ function customizeSearch() {
 	console.log("Customize (save search) button clicked");
 }
 
-document.addEventListener('click', function() { event.preventDefault(); customizeSearch(); }, false);
+elCustomizeButton = document.getElementById('customize-search-btn');
+elCustomizeButton.addEventListener('click', function() { event.preventDefault(); customizeSearch(); }, false);
+
+function stateSelected(e) {
+	selected_state = e.target.value;
+}
+
+elRacetype = document.getElementById('racetype');
+elRacetype.addEventListener('change', function(e) { selected_race_type = e.target.value; } )
 /*
 var bikereg_response = httpGet('https://www.bikereg.com/api/search?year=2016&eventtype=Road%20Race');
 var race_data = JSON.parse(bikereg_response);
