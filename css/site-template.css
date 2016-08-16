@@ -39,11 +39,11 @@ header {
 
 nav, footer {
 	background-color: lightgray;
-	padding: 0.5em;
+	padding: 0.25em;
 }
 
 article, .feature {
-	height: 20em;
+	height: 15em;
 	margin-bottom: 0.5em;
 	background-color: lightgray;
 }
@@ -55,7 +55,7 @@ article, .feature {
 
 li.navitem {
 	display: inline;
-	padding: 0.5em;
+	padding: 1em;
 }
 
 table {
@@ -75,6 +75,16 @@ td, th {
 	margin-right: 0.5em;
 }
 
-#mkt-items, #race-table {
+#market, #races {
 	font-size: 75%;
+}
+
+#add-item, #customize-races {
+	padding: 10px;
+}
+
+label {
+	float: left;
+	width: 120px;
+	text-align: right;
 }

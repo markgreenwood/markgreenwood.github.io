@@ -20,7 +20,7 @@ raceItemArray.push(new raceItem("Portland Twilight Criterium", "OR", "August 1, 
 
 var selected_state = "OR";
 var races = "<table>";
-races += "<tr><th colspan=3>Races in " + selected_state + "</th></tr>";
+races += "<tr><th colspan=3>Races available</th></tr>";
 races += "<tr><th>Race</th><th>Race Date</th><th>Race Type</th>";
 
 for (i = 0; i < raceItemArray.length; i++) {

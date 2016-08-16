@@ -28,6 +28,25 @@
 				<div class="column2" id="races">
 					<div id="race-table">
 					</div>
+					<div id="customize-races">
+						<form>
+							<label for="racer-name">Name: </label><input type="text" id="racer-name" name="racer-name" /><br />
+							<label for="state">State: </label>
+							<select name="state">
+								<option>CA</option>
+								<option>OR</option>
+								<option>WA</option>
+							</select><br />
+							<label for="racetype">Race type: </label>
+							<select name="racetype">
+								<option>Road race</option>
+								<option>Stage race</option>
+								<option>Time trial</option>
+								<option>Triathlon</option>
+							</select><br />
+							<button>Customize (save search)</button>
+						</form>
+					</div>
 				</div>
 				<div class="column3" id="market">
 					<form>
@@ -36,11 +55,21 @@
 					</div>
 					<div id="add-item">
 						<form>
+							<label for="buysell">Buy/sell:</label>
 							<select name="buysell">
 								<option>Buy</option>
 								<option>Sell</option>
 							</select><br />
-							<label>Item: <input type="text" name="item" /></label><br />
+							<label for="item">Item: </label>
+							<input type="text" id="item" name="item" /><br />
+							<label for="description">Description: </label>
+							<input type="textarea" id="description" name="description" /><br />
+							<label for="price">Price (USD): </label>
+							<input type="text" id="price" name="price" /><br />
+							<label for="contact-name">Contact name: </label>
+							<input type="text" id="contact-name" name="contact-name" /><br />
+							<label for="contact-phone">Contact phone: </label>
+							<input type="text" id="contact-phone" name="contact-phone" /><br />
 							<button id="additembutton">Add item</button>
 						</form>
 					</div>
