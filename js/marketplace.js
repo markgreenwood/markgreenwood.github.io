@@ -39,6 +39,7 @@ mktItemArray.push(
 function displayMktItemTable(mktItems) {
 	var elMktItemTable = document.createElement('table');
 	var elMktItems = document.getElementById('mkt-items');
+	elMktItems.removeChild(elMktItems.firstChild);
 	elMktItems.appendChild(elMktItemTable);
 
 	var tblContent = '<tr><th colspan=5>Marketplace</th></tr>';
@@ -48,7 +49,7 @@ function displayMktItemTable(mktItems) {
 		tblContent += '<tr>' +
 			'<td>' + mktItems[i].sell_or_buy + '</td>' +
 			'<td>' + mktItems[i].item + '</td>' +
-			'<td>' + mktItems[i].price + '</td>' +
+			'<td>$' + mktItems[i].price + '</td>' +
 			'<td>' + mktItems[i].contact_name + '</td>' +
 			'<td>' + mktItems[i].contact_phone + '</td></tr>';
 	}
@@ -78,19 +79,39 @@ elMarket.innerHTML = mktItemTable;
 */
 // end refactor displayMktItems
 
-function addMktItem() {
+function addMktItem(mktItems) {
 	console.log('Called addMktItem');
-	/*
-	var mktTable = document.getElementById('mktItemTable');
-	var mktTableLastRow = mktItemTable.lastChild;
-	var newMktTableRow = document.createElement('tr');
-	var newItem = document.createElement('td');
-	var newItem_tn = document.createTextNode('Another item');
-	newItem.appendChild(newItem_tn);
-	newMktTableRow.appendChild(newItem);
-	mktTable.appendChild(newMktTableRow);
-	*/
+	var elItem = document.getElementById('item');
+	var elBuySell = document.getElementById('buysell');
+	var elDescription = document.getElementById('description');
+	var elPrice = document.getElementById('price');
+	var elContactName = document.getElementById('contact-name');
+	var elContactPhone = document.getElementById('contact-phone');
+
+	itemToAdd = new mktItem(
+		elItem.value,
+		elBuySell.value,
+		elDescription.value,
+		elPrice.value,
+		elContactName.value,
+		elContactPhone.value
+	)
+
+	// clear controls
+	elItem.value = '';
+	elBuySell.value = '';
+	elDescription.value = '';
+	elPrice.value = '';
+	elContactName.value = '';
+	elContactPhone.value = '';
+
+	mktItems.push(itemToAdd);
+
+	displayMktItemTable(mktItems);
 }
 
 elAddItem = document.getElementById('additembutton');
-elAddItem.addEventListener('click', function() { event.preventDefault(); addMktItem(); });
+elAddItem.addEventListener('click', function() {
+	event.preventDefault();
+	addMktItem(mktItemArray);
+});
