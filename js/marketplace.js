@@ -15,9 +15,9 @@ var mktItemArray = [];
 
 mktItemArray.push(
 	new mktItem(
-		'Trek 5200 carbon road bike', 
-		'Sell', 
-		'21" frame, Ultegra components, good condition, carbon fiber frame/fork', 
+		'Trek 5200 carbon road bike',
+		'Sell',
+		'21" frame, Ultegra components, good condition, carbon fiber frame/fork',
 		1000,
 		'Mark',
 		'999-999-9999'
@@ -26,18 +26,41 @@ mktItemArray.push(
 
 mktItemArray.push(
 	new mktItem(
-		'Autographed "Shut Up, Legs!" jersey', 
-		'Sell', 
-		'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt', 
+		'Autographed "Shut Up, Legs!" jersey',
+		'Sell',
+		'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt',
 		300,
 		'Jakob Fuglsang',
 		'000-000-0000'
 		)
 	);
 
+// Refactor displayMktItems into a function
+function displayMktItemTable(mktItems) {
+	var elMktItemTable = document.createElement('table');
+	var elMktItems = document.getElementById('mkt-items');
+	elMktItems.appendChild(elMktItemTable);
+
+	var tblContent = '<tr><th colspan=5>Marketplace</th></tr>';
+	tblContent += '<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>';
+
+	for (i = 0; i < mktItems.length; i++) {
+		tblContent += '<tr>' +
+			'<td>' + mktItems[i].sell_or_buy + '</td>' +
+			'<td>' + mktItems[i].item + '</td>' +
+			'<td>' + mktItems[i].price + '</td>' +
+			'<td>' + mktItems[i].contact_name + '</td>' +
+			'<td>' + mktItems[i].contact_phone + '</td></tr>';
+	}
+
+	elMktItemTable.innerHTML = tblContent;
+}
+
+displayMktItemTable(mktItemArray);
+/*
 var mktItemTable = '<table id="mktItemTable">';
 mktItemTable += "<tr><th colspan=5>Marketplace</th></tr>";
-mktItemTable += "<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th>";
+mktItemTable += "<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>";
 
 for (i = 0; i < mktItemArray.length; i++) {
 	mktItemTable += "<tr>" +
@@ -52,9 +75,12 @@ for (i = 0; i < mktItemArray.length; i++) {
 mktItemTable += "</table>";
 
 elMarket.innerHTML = mktItemTable;
+*/
+// end refactor displayMktItems
 
 function addMktItem() {
 	console.log('Called addMktItem');
+	/*
 	var mktTable = document.getElementById('mktItemTable');
 	var mktTableLastRow = mktItemTable.lastChild;
 	var newMktTableRow = document.createElement('tr');
@@ -63,6 +89,7 @@ function addMktItem() {
 	newItem.appendChild(newItem_tn);
 	newMktTableRow.appendChild(newItem);
 	mktTable.appendChild(newMktTableRow);
+	*/
 }
 
 elAddItem = document.getElementById('additembutton');
