@@ -11,29 +11,31 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	this.contact_phone = contact_phone;
 }
 
-var mktItemArray = [];
+var mktItemList = JSON.parse(localStorage.getItem('mktItems'));
 
-mktItemArray.push(
-	new mktItem(
-		'Trek 5200 carbon road bike',
-		'Sell',
-		'21" frame, Ultegra components, good condition, carbon fiber frame/fork',
-		1000,
-		'Mark',
-		'999-999-9999'
-		)
-	);
+if (mktItemList.length === 0) { // populate a mktItemList with some items for demo
+	mktItemList.push(
+		new mktItem(
+			'Trek 5200 carbon road bike',
+			'Sell',
+			'21" frame, Ultegra components, good condition, carbon fiber frame/fork',
+			1000,
+			'Mark',
+			'999-999-9999'
+			)
+		);
 
-mktItemArray.push(
-	new mktItem(
-		'Autographed "Shut Up, Legs!" jersey',
-		'Sell',
-		'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt',
-		300,
-		'Jakob Fuglsang',
-		'000-000-0000'
-		)
-	);
+	mktItemList.push(
+		new mktItem(
+			'Autographed "Shut Up, Legs!" jersey',
+			'Sell',
+			'Euro-fit jersey with "Shut Up, Legs", autographed by The Jensie, Jens Voigt',
+			300,
+			'Jakob Fuglsang',
+			'000-000-0000'
+			)
+		);
+}
 
 // Refactor displayMktItems into a function
 function displayMktItemTable(mktItems) {
@@ -57,7 +59,7 @@ function displayMktItemTable(mktItems) {
 	elMktItemTable.innerHTML = tblContent;
 }
 
-displayMktItemTable(mktItemArray);
+displayMktItemTable(mktItemList);
 
 function addMktItem(mktItems) {
 	console.log('Called addMktItem');
@@ -87,11 +89,13 @@ function addMktItem(mktItems) {
 
 	mktItems.push(itemToAdd);
 
+	localStorage.setItem('mktItems', JSON.stringify(mktItems));
+
 	displayMktItemTable(mktItems);
 }
 
 elAddItem = document.getElementById('add-item-btn');
 elAddItem.addEventListener('click', function() {
 	event.preventDefault();
-	addMktItem(mktItemArray);
+	addMktItem(mktItemList);
 });
