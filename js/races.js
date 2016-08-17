@@ -8,6 +8,7 @@ function raceItem(racename, state, racedate, racetype)
 	this.racetype = racetype;
 }
 
+// Build up a list of races (would come from database or an API in the real app)
 var raceItemArray = [];
 
 raceItemArray.push(new raceItem("Cascade Cycling Classic", "OR", "June 21, 2008", "Stage Race"));
@@ -19,10 +20,13 @@ raceItemArray.push(new raceItem("Hagg Lake Triathlon", "OR", "July 7, 2016", "Tr
 raceItemArray.push(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2008", "Criterium"));
 raceItemArray.push(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
 raceItemArray.push(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
+raceItemArray.push(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
 
+// Filter criteria
 var selected_state = "OR";
 var selected_race_type = "";
 
+// Build up the races table (TODO: refactor into function call so it can be used repeatedly)
 var races = "<table>";
 races += "<tr><th colspan=3>";
 

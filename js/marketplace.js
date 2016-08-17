@@ -58,26 +58,6 @@ function displayMktItemTable(mktItems) {
 }
 
 displayMktItemTable(mktItemArray);
-/*
-var mktItemTable = '<table id="mktItemTable">';
-mktItemTable += "<tr><th colspan=5>Marketplace</th></tr>";
-mktItemTable += "<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>";
-
-for (i = 0; i < mktItemArray.length; i++) {
-	mktItemTable += "<tr>" +
-		"<td>" + mktItemArray[i].sell_or_buy + "</td>" +
-		"<td>" + mktItemArray[i].item + "</td>" +
-		"<td>$" + mktItemArray[i].price + "</td>" +
-		"<td>" + mktItemArray[i].contact_name + "</td>" +
-		"<td>" + mktItemArray[i].contact_phone + "</td>" +
-		"</tr>";
-}
-
-mktItemTable += "</table>";
-
-elMarket.innerHTML = mktItemTable;
-*/
-// end refactor displayMktItems
 
 function addMktItem(mktItems) {
 	console.log('Called addMktItem');
@@ -110,7 +90,7 @@ function addMktItem(mktItems) {
 	displayMktItemTable(mktItems);
 }
 
-elAddItem = document.getElementById('additembutton');
+elAddItem = document.getElementById('add-item-btn');
 elAddItem.addEventListener('click', function() {
 	event.preventDefault();
 	addMktItem(mktItemArray);
