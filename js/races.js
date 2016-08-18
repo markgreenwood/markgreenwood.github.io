@@ -57,8 +57,10 @@ racesList.addRace(new raceItem("Woodland Hills Road Race", "WA", "August 18, 201
 racesList.addRace(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
 racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
 
+var selected_state = "";
+var selected_racetype = "";
 elRaces = document.getElementById('race-table');
-elRaces.innerHTML = racesList.getRaceListAsHTMLTable("", ""); // display the full race list
+elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype); // display the full race list
 
 // Add event listener for Customize search button
 function customizeSearch() {
@@ -75,13 +77,13 @@ function stateSelected(e) {
 elState = document.getElementById('state');
 elState.addEventListener('change', function(e) {
 	selected_state = e.target.value;
-	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_race_type);
+	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype);
 });
 
 elRacetype = document.getElementById('racetype');
 elRacetype.addEventListener('change', function(e) {
-	selected_race_type = e.target.value;
-	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_race_type);
+	selected_racetype = e.target.value;
+	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype);
 });
 
 /*
