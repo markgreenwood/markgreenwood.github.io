@@ -69,6 +69,10 @@ td, th {
 	padding: 5px;
 }
 
+th {
+	font-weight: bold;
+}
+
 .newspic {
 	height: 100%;
 	float: left;

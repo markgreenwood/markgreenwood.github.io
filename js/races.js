@@ -8,57 +8,57 @@ function raceItem(racename, state, racedate, racetype)
 	this.racetype = racetype;
 }
 
-// Build up a list of races (would come from database or an API in the real app)
-var raceItemArray = [];
+function raceList() {
+	this.races = [];
+	this.addRace = function(raceItem) {
+		this.races.push(raceItem);
+	}
+	this.getRaceListAsHTMLTable = function(state, racetype) {
+		var title;
+		if (!racetype) {
+			title = "Races";
+		}
+		else {
+			title = racetype + "s";
+		}
+		if (state) {
+			title += " in " + state;
+		}
+		var raceListHTMLTable = '<table>';
+		raceListHTMLTable += '<tr><th colspan=5>' + title + '</th></tr>';
+		raceListHTMLTable += '<tr><th>Race</th><th>Race date</th><th>Location</th><th>Race type</th></tr>';
 
-raceItemArray.push(new raceItem("Cascade Cycling Classic", "OR", "June 21, 2008", "Stage Race"));
-raceItemArray.push(new raceItem("Blue Lake Triathlon", "OR", "June 2, 2016", "Triathlon"));
-raceItemArray.push(new raceItem("Doreena Lake Road Race", "OR", "Aug 12, 2016", "Road Race"));
-raceItemArray.push(new raceItem("Fall Creek Road Race", "OR", "July 17, 2016", "Road Race"));
-raceItemArray.push(new raceItem("OR State Championship TT", "OR", "July 27, 2016", "Time Trial"));
-raceItemArray.push(new raceItem("Hagg Lake Triathlon", "OR", "July 7, 2016", "Triathlon"));
-raceItemArray.push(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2008", "Criterium"));
-raceItemArray.push(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
-raceItemArray.push(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
-raceItemArray.push(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
-
-// Filter criteria
-var selected_state = "OR";
-var selected_race_type = "";
-
-// Build up the races table (TODO: refactor into function call so it can be used repeatedly)
-var races = "<table>";
-races += "<tr><th colspan=3>";
-
-if (selected_race_type) {
-	races += selected_race_type + "s available";
-}
-else {
-	races += "Races available";
-}
-
-if (selected_state) {
-	races += " in " + selected_state;
-}
-
-races += "</th></tr>";
-races += "<tr><th>Race</th><th>Race Date</th><th>Race Type</th>";
-
-for (i = 0; i < raceItemArray.length; i++) {
-	//console.log(raceItemArray[i]);
-	if (
-			((!selected_state) || (raceItemArray[i].state == selected_state)) &&
-			((!selected_race_type) || (raceItemArray[i].racetype == selected_race_type))
-		) {
-		//console.log("Found an Oregon race");
-		races += "<tr><td>" + raceItemArray[i].racename + "</td><td>" + raceItemArray[i].racedate + "</td><td>" + raceItemArray[i].racetype + "</td>";
+		for (i = 0; i < this.races.length; i++) {
+			if (
+					((!racetype) || (racetype === this.races[i].racetype)) &&
+					((!state) || (state === this.races[i].state))
+				)	{
+				raceListHTMLTable += '<tr>' +
+					'<td>' + this.races[i].racename + '</td>' +
+					'<td>' + this.races[i].racedate + '</td>' +
+					'<td>' + this.races[i].state + '</td>' +
+					'<td>' + this.races[i].racetype + '</td>' +
+					'</tr>';
+			}
+		}
+		return raceListHTMLTable;
 	}
 }
 
-races += "</table>";
+var racesList = new raceList();
+racesList.addRace(new raceItem("Cascade Cycling Classic", "OR", "June 21, 2008", "Stage Race"));
+racesList.addRace(new raceItem("Blue Lake Triathlon", "OR", "June 2, 2016", "Triathlon"));
+racesList.addRace(new raceItem("Doreena Lake Road Race", "OR", "Aug 12, 2016", "Road Race"));
+racesList.addRace(new raceItem("Fall Creek Road Race", "OR", "July 17, 2016", "Road Race"));
+racesList.addRace(new raceItem("OR State Championship TT", "OR", "July 27, 2016", "Time Trial"));
+racesList.addRace(new raceItem("Hagg Lake Triathlon", "OR", "July 7, 2016", "Triathlon"));
+racesList.addRace(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2008", "Criterium"));
+racesList.addRace(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
+racesList.addRace(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
+racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
 
 elRaces = document.getElementById('race-table');
-elRaces.innerHTML = races;
+elRaces.innerHTML = racesList.getRaceListAsHTMLTable("", ""); // display the full race list
 
 // Add event listener for Customize search button
 function customizeSearch() {
@@ -72,8 +72,18 @@ function stateSelected(e) {
 	selected_state = e.target.value;
 }
 
+elState = document.getElementById('state');
+elState.addEventListener('change', function(e) {
+	selected_state = e.target.value;
+	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_race_type);
+});
+
 elRacetype = document.getElementById('racetype');
-elRacetype.addEventListener('change', function(e) { selected_race_type = e.target.value; } )
+elRacetype.addEventListener('change', function(e) {
+	selected_race_type = e.target.value;
+	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_race_type);
+});
+
 /*
 var bikereg_response = httpGet('https://www.bikereg.com/api/search?year=2016&eventtype=Road%20Race');
 var race_data = JSON.parse(bikereg_response);
