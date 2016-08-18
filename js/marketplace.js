@@ -11,7 +11,7 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	this.contact_phone = contact_phone;
 }
 
-var mktItemList = JSON.parse(localStorage.getItem('mktItems'));
+var mktItemList = (JSON.parse(localStorage.getItem('mktItems')) || []);
 
 if (mktItemList.length === 0) { // populate a mktItemList with some items for demo
 	mktItemList.push(
