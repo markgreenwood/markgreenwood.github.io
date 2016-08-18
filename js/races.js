@@ -13,7 +13,7 @@ function raceList() {
 	this.addRace = function(raceItem) {
 		this.races.push(raceItem);
 	}
-	this.getRaceListAsHTMLTable = function(state, racetype) {
+	this.getFilteredRaceListAsHTMLTable = function(state, racetype) {
 		var title;
 		if (!racetype) {
 			title = "Races";
@@ -60,7 +60,7 @@ racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Sta
 var selected_state = "";
 var selected_racetype = "";
 elRaces = document.getElementById('race-table');
-elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype); // display the full race list
+elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype); // display the full race list
 
 // Add event listener for Customize search button
 function customizeSearch() {
@@ -70,20 +70,16 @@ function customizeSearch() {
 elCustomizeButton = document.getElementById('customize-search-btn');
 elCustomizeButton.addEventListener('click', function() { event.preventDefault(); customizeSearch(); }, false);
 
-function stateSelected(e) {
-	selected_state = e.target.value;
-}
-
 elState = document.getElementById('state');
 elState.addEventListener('change', function(e) {
 	selected_state = e.target.value;
-	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype);
+	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype);
 });
 
 elRacetype = document.getElementById('racetype');
 elRacetype.addEventListener('change', function(e) {
 	selected_racetype = e.target.value;
-	elRaces.innerHTML = racesList.getRaceListAsHTMLTable(selected_state, selected_racetype);
+	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype);
 });
 
 /*

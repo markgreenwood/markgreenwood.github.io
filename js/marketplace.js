@@ -3,6 +3,10 @@
 var elMarket = document.getElementById('mkt-items');
 
 function mktItem (item, sell_or_buy, description, price, contact_name, contact_phone) {
+	mktItem.obj_count = mktItem.obj_count || 0;
+	mktItem.obj_count++;
+
+	this.item_id = mktItem.obj_count;
 	this.item = item;
 	this.sell_or_buy = sell_or_buy;
 	this.description = description;
