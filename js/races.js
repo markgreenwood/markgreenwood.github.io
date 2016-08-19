@@ -59,6 +59,8 @@ racesList.addRace(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2
 racesList.addRace(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
 racesList.addRace(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
 racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
+racesList.addRace(new raceItem("AMGEN Tour of California", "CA", "May 15, 2016", "Stage Race"));
+racesList.addRace(new raceItem("Tour de France", "France", "July 2, 2016", "Stage Race"));
 
 //localStorage.removeItem('race_filter');
 var race_filter = (JSON.parse(localStorage.getItem('race_filter')) || { state: "", racetype: "" });
