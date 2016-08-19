@@ -7,7 +7,7 @@ body {
 	margin: 0 auto;
 	/* background: url("images/CoreysBreakaway.jpg") no-repeat center center fixed;
 	background-size: cover; */
-	background-color: gray;
+	background-color: #ccccff;
 }
 
 .content {
@@ -29,8 +29,9 @@ header {
 	float: left;
 	margin: 0.5%;
 	text-align: left;
-	background-color: lightgray;
-	min-width: 350px;
+	background-color: #ffffe6;
+	min-width: 360px;
+	border-radius: 10px;
 }
 
 .column3 {
@@ -38,14 +39,14 @@ header {
 }
 
 nav, footer {
-	background-color: lightgray;
+	background-color: transparent;
 	padding: 0.25em;
 }
 
 article, .feature {
 	height: 15em;
 	margin-bottom: 0.5em;
-	background-color: lightgray;
+	background-color: #ffffe6;
 }
 
 .feature {
@@ -56,15 +57,18 @@ article, .feature {
 .navitem {
 	display: inline;
 	padding: 1em;
-	background-color: cyan;
+	background-color: #ffcc66;
 	text-transform: uppercase;
 	min-width: 150px;
+	border-style: outset;
+	border-radius: 10px;
 }
 
 table {
 	border: 2px ridge;
 	border-collapse: collapse;
-	width: 100%;
+	width: 98%;
+	margin: 5px 5px 5px 5px;
 }
 
 td, th {
@@ -88,6 +92,10 @@ th {
 
 #add-item, #customize-races {
 	padding: 10px;
+}
+
+#add-item-btn, #customize-search-btn {
+	text-align: center;
 }
 
 label {

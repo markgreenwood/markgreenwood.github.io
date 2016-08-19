@@ -6,7 +6,7 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	mktItem.obj_count = mktItem.obj_count || 0;
 	mktItem.obj_count++;
 
-	this.item_id = mktItem.obj_count;
+	this.item_id = mktItem.obj_count; // quick & dirty experiment to assign id's to each item
 	this.item = item;
 	this.sell_or_buy = sell_or_buy;
 	this.description = description;
@@ -15,6 +15,7 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	this.contact_phone = contact_phone;
 }
 
+//localStorage.removeItem('mktItems');
 var mktItemList = (JSON.parse(localStorage.getItem('mktItems')) || []);
 
 if (mktItemList.length === 0) { // populate a mktItemList with some items for demo

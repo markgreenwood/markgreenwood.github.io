@@ -10,19 +10,22 @@ function raceItem(racename, state, racedate, racetype)
 
 function raceList() {
 	this.races = [];
+	this.length = function() {
+		return this.races.length;
+	}
 	this.addRace = function(raceItem) {
 		this.races.push(raceItem);
 	}
-	this.getFilteredRaceListAsHTMLTable = function(state, racetype) {
+	this.getFilteredRaceListAsHTMLTable = function(filter) {
 		var title;
-		if (!racetype) {
+		if (!filter.racetype) {
 			title = "Races";
 		}
 		else {
-			title = racetype + "s";
+			title = filter.racetype + "s";
 		}
-		if (state) {
-			title += " in " + state;
+		if (filter.state) {
+			title += " in " + filter.state;
 		}
 		var raceListHTMLTable = '<table>';
 		raceListHTMLTable += '<tr><th colspan=5>' + title + '</th></tr>';
@@ -30,8 +33,8 @@ function raceList() {
 
 		for (i = 0; i < this.races.length; i++) {
 			if (
-					((!racetype) || (racetype === this.races[i].racetype)) &&
-					((!state) || (state === this.races[i].state))
+					((!filter.racetype) || (filter.racetype === this.races[i].racetype)) &&
+					((!filter.state) || (filter.state === this.races[i].state))
 				)	{
 				raceListHTMLTable += '<tr>' +
 					'<td>' + this.races[i].racename + '</td>' +
@@ -57,29 +60,35 @@ racesList.addRace(new raceItem("Woodland Hills Road Race", "WA", "August 18, 201
 racesList.addRace(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
 racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
 
-var selected_state = "";
-var selected_racetype = "";
+//localStorage.removeItem('race_filter');
+var race_filter = (JSON.parse(localStorage.getItem('race_filter')) || { state: "", racetype: "" });
+
 elRaces = document.getElementById('race-table');
-elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype); // display the full race list
+elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter); // display the full race list
 
 // Add event listener for Customize search button
-function customizeSearch() {
-	console.log("Customize (save search) button clicked");
+function saveSearchParameters(filter) {
+	localStorage.setItem('race_filter', JSON.stringify(filter));
 }
 
 elCustomizeButton = document.getElementById('customize-search-btn');
-elCustomizeButton.addEventListener('click', function() { event.preventDefault(); customizeSearch(); }, false);
+elCustomizeButton.addEventListener('click', function() {
+	event.preventDefault();
+	saveSearchParameters(race_filter);
+}, false);
 
 elState = document.getElementById('state');
+elState.value = race_filter.state;
 elState.addEventListener('change', function(e) {
-	selected_state = e.target.value;
-	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype);
+	race_filter.state = e.target.value;
+	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
 });
 
 elRacetype = document.getElementById('racetype');
+elRacetype.value = race_filter.racetype;
 elRacetype.addEventListener('change', function(e) {
-	selected_racetype = e.target.value;
-	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(selected_state, selected_racetype);
+	race_filter.racetype = e.target.value;
+	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
 });
 
 /*
