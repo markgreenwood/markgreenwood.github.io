@@ -51,7 +51,7 @@ article, .feature {
 
 .feature {
 	text-align: left;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .navitem {

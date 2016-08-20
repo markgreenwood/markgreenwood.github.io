@@ -48,7 +48,7 @@ function displayMktItemTable(mktItems) {
 	var elMktItems = document.getElementById('mkt-items');
 	elMktItems.removeChild(elMktItems.firstChild);
 	elMktItems.appendChild(elMktItemTable);
-
+	
 	var tblContent = '<tr><th colspan=5>Marketplace</th></tr>';
 	tblContent += '<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>';
 
