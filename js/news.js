@@ -20,7 +20,7 @@ newsItemArray.push(
 	new newsItem(
 			'Kristin Armstrong wins Cascade Classic time trial',
 			'images/K_Armstrong_TT_Finish.jpg',
-			'Kristin Armstrong won the Cascade Classic\'s Skyliners time trial on Saturday, riding the out-and-back course at a blistering 27 mph pace.'
+			'Kristin Armstrong won the Cascade Cycling Classic\'s Skyliners time trial on Saturday, July 11, 2008, riding the out-and-back course in the high desert near Bend, OR at a blistering 27 mph pace.'
 		)
 	);
 

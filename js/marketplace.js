@@ -48,17 +48,17 @@ function displayMktItemTable(mktItems) {
 	var elMktItems = document.getElementById('mkt-items');
 	elMktItems.removeChild(elMktItems.firstChild);
 	elMktItems.appendChild(elMktItemTable);
-	
+
 	var tblContent = '<tr><th colspan=5>Marketplace</th></tr>';
 	tblContent += '<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>';
 
 	for (i = 0; i < mktItems.length; i++) {
 		tblContent += '<tr>' +
-			'<td>' + mktItems[i].sell_or_buy + '</td>' +
-			'<td>' + mktItems[i].item + '</td>' +
-			'<td>$' + mktItems[i].price + '</td>' +
-			'<td>' + mktItems[i].contact_name + '</td>' +
-			'<td>' + mktItems[i].contact_phone + '</td></tr>';
+			'<td class="buysell">' + mktItems[i].sell_or_buy + '</td>' +
+			'<td class="item">' + mktItems[i].item + '</td>' +
+			'<td class="price">$' + mktItems[i].price + '</td>' +
+			'<td class="contactname">' + mktItems[i].contact_name + '</td>' +
+			'<td class="contactphone">' + mktItems[i].contact_phone + '</td></tr>';
 	}
 
 	elMktItemTable.innerHTML = tblContent;
