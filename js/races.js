@@ -74,26 +74,48 @@ function saveSearchParameters(filter) {
 }
 
 elCustomizeButton = document.getElementById('customize-search-btn');
-elCustomizeButton.addEventListener('click', function() {
-	event.preventDefault();
-	saveSearchParameters(race_filter);
-}, false);
+if(elCustomizeButton.addEventListener) {
+	elCustomizeButton.addEventListener('click', function(e) {
+		if (!e) {
+			e = window.event;
+		}
+		e.preventDefault();
+		saveSearchParameters(race_filter);
+	}, false);
+}
+else {
+	elCustomizeButton.attachEvent('onclick', function() {
+		window.event.preventDefault();
+		saveSearchParameters(race_filter);
+	});
+}
 
 elState = document.getElementById('state');
 elState.value = race_filter.state;
-elState.addEventListener('change', function(e) {
-	race_filter.state = e.target.value;
-	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
-});
+if (elState.addEventListener) {
+	elState.addEventListener('change', function(e) {
+		race_filter.state = e.target.value;
+		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+	});
+}
+else {
+	elState.attachEvent('onchange', function() {
+		race_filter.state = window.event.target.value;
+		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+	});
+}
 
 elRacetype = document.getElementById('racetype');
 elRacetype.value = race_filter.racetype;
-elRacetype.addEventListener('change', function(e) {
-	race_filter.racetype = e.target.value;
-	elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
-});
-
-/*
-var bikereg_response = httpGet('https://www.bikereg.com/api/search?year=2016&eventtype=Road%20Race');
-var race_data = JSON.parse(bikereg_response);
-*/
+if (elRacetype.addEventListener) {
+	elRacetype.addEventListener('change', function(e) {
+		race_filter.racetype = e.target.value;
+		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+	});
+}
+else {
+	elRacetype.attachEvent('onchange', function() {
+		race_filter.racetype = window.event.target.value;
+		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+	});
+}
