@@ -15,7 +15,7 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	this.contact_phone = contact_phone;
 }
 
-//localStorage.removeItem('mktItems');
+localStorage.removeItem('mktItems');
 var mktItemList = (JSON.parse(localStorage.getItem('mktItems')) || []);
 
 if (mktItemList.length === 0) { // populate a mktItemList with some items for demo
@@ -40,6 +40,17 @@ if (mktItemList.length === 0) { // populate a mktItemList with some items for de
 			'000-000-0000'
 			)
 		);
+
+	mktItemList.push(
+		new mktItem(
+			'Jens Voigt\'s coffee maker',
+			'Sell',
+			'Kept The Jensie going through training rides, chauffering kids around, and just getting through the day',
+			400,
+			'Stuart O\'Grady',
+			'444-444-4444'
+		)
+	);
 }
 
 // Refactor displayMktItems into a function
@@ -67,7 +78,6 @@ function displayMktItemTable(mktItems) {
 displayMktItemTable(mktItemList);
 
 function addMktItem(mktItems) {
-	console.log('Called addMktItem');
 	var elItem = document.getElementById('item');
 	var elBuySell = document.getElementById('buysell');
 	var elDescription = document.getElementById('description');
@@ -92,10 +102,13 @@ function addMktItem(mktItems) {
 	elContactName.value = '';
 	elContactPhone.value = '';
 
+	// add the new item to the list
 	mktItems.push(itemToAdd);
 
+	// store the modified list in localStorage
 	localStorage.setItem('mktItems', JSON.stringify(mktItems));
 
+	// update the view (table)
 	displayMktItemTable(mktItems);
 }
 
