@@ -1,10 +1,3 @@
-function getRandomInt(min, max) {
-	// getRandomInt returns a random integer between min and max inclusive.
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max-min+1)) + min;
-}
-
 /* Populate cycling news with faux stories, will eventually pull from Google or some other news feed */
 
 function newsItem(headline, image_url, article_text) {
@@ -39,17 +32,3 @@ newsItemArray.push(
 			'Mark Greenwood is out for the season after getting caught in a five-rider crash at PIR. As Greenwood was moving up on the outside, the rider to his right swerved into him and locked handlebars, causing the crash when he pulled away. Corey Nevers, Greenwood\'s teammate, was not involved in the crash and went on to win Tuesday evening.'
 		)
 	);
-
-function displayRandomNewsItem(newsItems) {
-	var elNews = document.getElementById('news');
-	var storyIndex = getRandomInt(0, newsItemArray.length-1);
-	var news = '';
-	news += '<img class="newspic" src="' + newsItems[storyIndex].image_url + '"><h1>' + newsItems[storyIndex].headline + '</h1><p>' +
-		newsItems[storyIndex].article_text + '</p>';
-
-	elNews.innerHTML = news;
-}
-
-displayRandomNewsItem(newsItemArray);
-
-var myTimer = setInterval(function() { displayRandomNewsItem(newsItemArray); }, 10000);
