@@ -29,6 +29,9 @@ The content (news, races, and marketplace items) are all "fake data" for the pur
 
 In a fully-developed application, real news would be provided from a third-party news feed / API, race info could be drawn from a server database maintained by this site or from a third-party API, and the marketplace data would be managed via a server database.
 
+## Known Issues
+* On the about page, the profile picture sometimes fails to load until the page is refreshed. I searched Stack Overflow and other sources for hints why this might happen, but after trying several things I still haven't been able to get it to work reliably. At first I thought it was only happening in Chrome, but then I observed it once in Safari as well.
+
 ## Sources & Attributions
 Ideas and information used in creating this site came from the books *HTML and CSS* and *JavaScript and jQuery* by Jon Duckett.
 
