@@ -40,14 +40,18 @@ newsItemArray.push(
 		)
 	);
 
-var elNews = document.getElementById('news');
-var storyIndex = getRandomInt(0, newsItemArray.length-1);
-/*
-console.log("Fetching news story ", storyIndex);
-*/
+function displayRandomNewsItem() {
+	var elNews = document.getElementById('news');
+	var storyIndex = getRandomInt(0, newsItemArray.length-1);
+	/*
+	console.log("Fetching news story ", storyIndex);
+	*/
 
-var news = '';
-news += '<img class="newspic" src="' + newsItemArray[storyIndex].image_url + '"><h1>' + newsItemArray[storyIndex].headline + '</h1><p>' +
-	newsItemArray[storyIndex].article_text + '</p>';
+	var news = '';
+	news += '<img class="newspic" src="' + newsItemArray[storyIndex].image_url + '"><h1>' + newsItemArray[storyIndex].headline + '</h1><p>' +
+		newsItemArray[storyIndex].article_text + '</p>';
 
-elNews.innerHTML = news;
+	elNews.innerHTML = news;
+}
+
+displayRandomNewsItem();

@@ -41,6 +41,7 @@ header {
 nav, footer {
 	background-color: transparent;
 	padding: 0.25em;
+	min-width: 600px;
 }
 
 article, .feature {
@@ -62,6 +63,10 @@ article, .feature {
 	min-width: 150px;
 	border-style: outset;
 	border-radius: 10px;
+}
+
+.navitem a:-webkit-any-link {
+	text-decoration: none;
 }
 
 table {
@@ -97,6 +102,8 @@ th {
 #add-item-btn, #customize-search-btn {
 	text-align: center;
 	width: 100%;
+	background-color: #b3cce6;
+	margin-top: 5px;
 }
 
 label {
