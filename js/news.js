@@ -40,16 +40,16 @@ newsItemArray.push(
 		)
 	);
 
-function displayRandomNewsItem() {
+function displayRandomNewsItem(newsItems) {
 	var elNews = document.getElementById('news');
 	var storyIndex = getRandomInt(0, newsItemArray.length-1);
 	var news = '';
-	news += '<img class="newspic" src="' + newsItemArray[storyIndex].image_url + '"><h1>' + newsItemArray[storyIndex].headline + '</h1><p>' +
-		newsItemArray[storyIndex].article_text + '</p>';
+	news += '<img class="newspic" src="' + newsItems[storyIndex].image_url + '"><h1>' + newsItems[storyIndex].headline + '</h1><p>' +
+		newsItems[storyIndex].article_text + '</p>';
 
 	elNews.innerHTML = news;
 }
 
-displayRandomNewsItem();
+displayRandomNewsItem(newsItemArray);
 
-var myTimer = setInterval(displayRandomNewsItem, 10000);
+var myTimer = setInterval(function() { displayRandomNewsItem(newsItemArray); }, 10000);
