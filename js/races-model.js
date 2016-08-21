@@ -8,65 +8,60 @@ function raceItem(racename, state, racedate, racetype)
 	this.racetype = racetype;
 }
 
-function raceList() {
-	this.races = [];
-	this.length = function() {
-		return this.races.length;
-	}
-	this.addRace = function(raceItem) {
-		this.races.push(raceItem);
-	}
-	this.getFilteredRaceListAsHTMLTable = function(filter) {
-		var title;
-		if (!filter.racetype) {
-			title = "Races";
-		}
-		else {
-			title = filter.racetype + "s";
-		}
-		if (filter.state) {
-			title += " in " + filter.state;
-		}
-		var raceListHTMLTable = '<table>';
-		raceListHTMLTable += '<tr><th colspan=5>' + title + '</th></tr>';
-		raceListHTMLTable += '<tr><th>Race</th><th>Race date</th><th>Location</th><th>Race type</th></tr>';
+var raceList = [];
+raceList.push(new raceItem("Cascade Cycling Classic", "OR", "June 21, 2008", "Stage Race"));
+raceList.push(new raceItem("Blue Lake Triathlon", "OR", "June 2, 2016", "Triathlon"));
+raceList.push(new raceItem("Doreena Lake Road Race", "OR", "Aug 12, 2016", "Road Race"));
+raceList.push(new raceItem("Fall Creek Road Race", "OR", "July 17, 2016", "Road Race"));
+raceList.push(new raceItem("OR State Championship TT", "OR", "July 27, 2016", "Time Trial"));
+raceList.push(new raceItem("Hagg Lake Triathlon", "OR", "July 7, 2016", "Triathlon"));
+raceList.push(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2008", "Criterium"));
+raceList.push(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
+raceList.push(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
+raceList.push(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
+raceList.push(new raceItem("AMGEN Tour of California", "CA", "May 15, 2016", "Stage Race"));
+raceList.push(new raceItem("Tour de France", "France", "July 2, 2016", "Stage Race"));
 
-		for (i = 0; i < this.races.length; i++) {
-			if (
-					((!filter.racetype) || (filter.racetype === this.races[i].racetype)) &&
-					((!filter.state) || (filter.state === this.races[i].state))
-				)	{
-				raceListHTMLTable += '<tr>' +
-					'<td>' + this.races[i].racename + '</td>' +
-					'<td>' + this.races[i].racedate + '</td>' +
-					'<td>' + this.races[i].state + '</td>' +
-					'<td>' + this.races[i].racetype + '</td>' +
-					'</tr>';
-			}
-		}
-		return raceListHTMLTable;
+// Code below can be moved into homepage.html
+function createFilteredRaceListAsHTMLTable(filter, racelist) {
+	var elRaceListTable = document.createElement('table');
+	var title;
+	if (!filter.racetype) {
+		title = "racelist";
 	}
+	else {
+		title = filter.racetype + "s";
+	}
+	if (filter.state) {
+		title += " in " + filter.state;
+	}
+	var tblContent = '<tr><th colspan=5>' + title + '</th></tr>';
+	tblContent += '<tr><th>Race</th><th>Race date</th><th>Location</th><th>Race type</th></tr>';
+
+	for (i = 0; i < racelist.length; i++) {
+		if (
+				((!filter.racetype) || (filter.racetype === racelist[i].racetype)) &&
+				((!filter.state) || (filter.state === racelist[i].state))
+			)	{
+			tblContent += '<tr>' +
+				'<td>' + racelist[i].racename + '</td>' +
+				'<td>' + racelist[i].racedate + '</td>' +
+				'<td>' + racelist[i].state + '</td>' +
+				'<td>' + racelist[i].racetype + '</td>' +
+				'</tr>';
+		}
+	}
+
+	elRaceListTable.innerHTML = tblContent;
+	return elRaceListTable;
 }
-
-var racesList = new raceList();
-racesList.addRace(new raceItem("Cascade Cycling Classic", "OR", "June 21, 2008", "Stage Race"));
-racesList.addRace(new raceItem("Blue Lake Triathlon", "OR", "June 2, 2016", "Triathlon"));
-racesList.addRace(new raceItem("Doreena Lake Road Race", "OR", "Aug 12, 2016", "Road Race"));
-racesList.addRace(new raceItem("Fall Creek Road Race", "OR", "July 17, 2016", "Road Race"));
-racesList.addRace(new raceItem("OR State Championship TT", "OR", "July 27, 2016", "Time Trial"));
-racesList.addRace(new raceItem("Hagg Lake Triathlon", "OR", "July 7, 2016", "Triathlon"));
-racesList.addRace(new raceItem("Portland Twilight Criterium", "OR", "August 1, 2008", "Criterium"));
-racesList.addRace(new raceItem("Woodland Hills Road Race", "WA", "August 18, 2016", "Road Race"));
-racesList.addRace(new raceItem("Seattle Pike Place Criterium", "WA", "June 5, 2016", "Criterium"));
-racesList.addRace(new raceItem("Sea Otter Classic", "CA", "August 2, 2016", "Stage Race"));
-racesList.addRace(new raceItem("AMGEN Tour of California", "CA", "May 15, 2016", "Stage Race"));
-racesList.addRace(new raceItem("Tour de France", "France", "July 2, 2016", "Stage Race"));
 
 //localStorage.removeItem('race_filter');
 var race_filter = (JSON.parse(localStorage.getItem('race_filter')) || { state: "", racetype: "" });
 
 elRaces = document.getElementById('race-table');
-elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter); // display the full race list
+elRaces.removeChild(elRaces.firstChild);
+elRaces.appendChild(createFilteredRaceListAsHTMLTable(race_filter, raceList)); // display the full race list
 
 // Add event listener for Customize search button
 function saveSearchParameters(filter) {
@@ -95,13 +90,15 @@ elState.value = race_filter.state;
 if (elState.addEventListener) {
 	elState.addEventListener('change', function(e) {
 		race_filter.state = e.target.value;
-		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+		elRaces.removeChild(elRaces.firstChild);
+		elRaces.appendChild(createFilteredRaceListAsHTMLTable(race_filter, raceList)); // display the full race list
 	});
 }
 else {
 	elState.attachEvent('onchange', function() {
 		race_filter.state = window.event.target.value;
-		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+		elRaces.removeChild(elRaces.firstChild);
+		elRaces.appendChild(createFilteredRaceListAsHTMLTable(race_filter, raceList)); // display the full race list
 	});
 }
 
@@ -110,12 +107,14 @@ elRacetype.value = race_filter.racetype;
 if (elRacetype.addEventListener) {
 	elRacetype.addEventListener('change', function(e) {
 		race_filter.racetype = e.target.value;
-		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+		elRaces.removeChild(elRaces.firstChild);
+		elRaces.appendChild(createFilteredRaceListAsHTMLTable(race_filter, raceList)); // display the full race list
 	});
 }
 else {
 	elRacetype.attachEvent('onchange', function() {
 		race_filter.racetype = window.event.target.value;
-		elRaces.innerHTML = racesList.getFilteredRaceListAsHTMLTable(race_filter);
+		elRaces.removeChild(elRaces.firstChild);
+		elRaces.appendChild(createFilteredRaceListAsHTMLTable(race_filter, raceList)); // display the full race list
 	});
 }

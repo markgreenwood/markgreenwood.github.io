@@ -3,11 +3,10 @@
 // races-model.js
 
 // Refactor displayMktItems into a function so it can be called whenever an update is needed
-function displayMktItemTable(mktItems) {
+function createMktItemTable(mktItems) {
 	var elMktItemTable = document.createElement('table');
-	var elMktItems = document.getElementById('mkt-items');
-	elMktItems.removeChild(elMktItems.firstChild);
-	elMktItems.appendChild(elMktItemTable);
+	//elMktItems.removeChild(elMktItems.firstChild);
+	//elMktItems.appendChild(elMktItemTable);
 
 	var tblContent = '<tr><th colspan=5>Marketplace</th></tr>';
 	tblContent += '<tr><th>Buy/Sell</th><th>Item</th><th>Price</th><th>Contact</th><th>Phone</th></tr>';
@@ -22,9 +21,12 @@ function displayMktItemTable(mktItems) {
 	}
 
 	elMktItemTable.innerHTML = tblContent;
+	return elMktItemTable;
 }
 
-displayMktItemTable(mktItemList);
+var elMktItems = document.getElementById('mkt-items');
+elMktItems.removeChild(elMktItems.firstChild);
+elMktItems.appendChild(createMktItemTable(mktItemList));
 
 // add event listener to add a new market item when required fields are filled in
 // and the Add Item button is clicked
