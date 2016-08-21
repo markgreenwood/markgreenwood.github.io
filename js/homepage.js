@@ -1,1 +1,0 @@
-/* Populate the marketplace with existing items */
