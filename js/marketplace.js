@@ -3,10 +3,13 @@
 var elMarket = document.getElementById('mkt-items');
 
 function mktItem (item, sell_or_buy, description, price, contact_name, contact_phone) {
+  /*
+	// This method of instance-counting to assign unique IDs didn't work out
+	// but I might come back to it
 	mktItem.obj_count = mktItem.obj_count || 0;
 	mktItem.obj_count++;
-
-	this.item_id = mktItem.obj_count; // quick & dirty experiment to assign id's to each item
+	this.item_id = mktItem.obj_count;
+	*/
 	this.item = item;
 	this.sell_or_buy = sell_or_buy;
 	this.description = description;
@@ -15,7 +18,11 @@ function mktItem (item, sell_or_buy, description, price, contact_name, contact_p
 	this.contact_phone = contact_phone;
 }
 
+// uncomment the following line to clear mktItems from localStorage
 //localStorage.removeItem('mktItems');
+
+// Either get the mktItemList in localStorage or create an empty list which will
+// be filled with a few items for demo purposes
 var mktItemList = (JSON.parse(localStorage.getItem('mktItems')) || []);
 
 if (mktItemList.length === 0) { // populate a mktItemList with some items for demo
@@ -85,31 +92,36 @@ function addMktItem(mktItems) {
 	var elContactName = document.getElementById('contact-name');
 	var elContactPhone = document.getElementById('contact-phone');
 
-	itemToAdd = new mktItem(
-		elItem.value,
-		elBuySell.value,
-		elDescription.value,
-		elPrice.value,
-		elContactName.value,
-		elContactPhone.value
-	)
+	if (!elItem.value || !elBuySell.value || !elPrice.value || !elContactName.value || !elContactPhone.value) {
+		alert("Please make sure all required fields are filled in before posting!");
+	}
+	else {
+		itemToAdd = new mktItem(
+			elItem.value,
+			elBuySell.value,
+			elDescription.value,
+			elPrice.value,
+			elContactName.value,
+			elContactPhone.value
+		);
 
-	// clear controls
-	elItem.value = '';
-	elBuySell.value = '';
-	elDescription.value = '';
-	elPrice.value = '';
-	elContactName.value = '';
-	elContactPhone.value = '';
+		// clear controls
+		elItem.value = '';
+		elBuySell.value = '';
+		elDescription.value = '';
+		elPrice.value = '';
+		elContactName.value = '';
+		elContactPhone.value = '';
 
-	// add the new item to the list
-	mktItems.push(itemToAdd);
+		// add the new item to the list
+		mktItems.push(itemToAdd);
 
-	// store the modified list in localStorage
-	localStorage.setItem('mktItems', JSON.stringify(mktItems));
+		// store the modified list in localStorage
+		localStorage.setItem('mktItems', JSON.stringify(mktItems));
 
-	// update the view (table)
-	displayMktItemTable(mktItems);
+		// update the view (table)
+		displayMktItemTable(mktItems);
+	}
 }
 
 elAddItem = document.getElementById('add-item-btn');
