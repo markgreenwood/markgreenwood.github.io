@@ -71,6 +71,7 @@ elAddItem.addEventListener('click', function() {
 		localStorage.setItem('mktItems', JSON.stringify(mktItemList));
 
 		// update the view (table)
-		displayMktItemTable(mktItemList);
+		elMktItems.removeChild(elMktItems.firstChild);
+		elMktItems.appendChild(createMktItemTable(mktItemList));
 	}
 });
