@@ -160,8 +160,8 @@ elMktItems.appendChild(createMktItemTable(mktItemList));
 // add event listener to add a new market item when required fields are filled in
 // and the Add Item button is clicked
 elAddItem = document.getElementById('add-item-btn');
-elAddItem.addEventListener('click', function() {
-	event.preventDefault();
+elAddItem.addEventListener('click', function(e) {
+	e.preventDefault();
 	var elItem = document.getElementById('item');
 	var elBuySell = document.getElementById('buysell');
 	var elDescription = document.getElementById('description');
