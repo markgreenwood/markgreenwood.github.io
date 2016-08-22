@@ -31,6 +31,7 @@ In a fully-developed application, real news would be provided from a third-party
 
 ## Known Issues
 * On the about page, the profile picture sometimes fails to load until the page is refreshed. I searched Stack Overflow and other sources for hints why this might happen, but after trying several things I still haven't been able to get it to work reliably. At first I thought it was only happening in Chrome, but then I observed it once in Safari as well.
+* The *Add Item* functionality in Marketplace does not appear to work in Firefox. I've tested it in Chrome, Safari, and MS Edge and it works in all those.
 
 ## Sources & Attributions
 Ideas and information used in creating this site came from the books *HTML and CSS* and *JavaScript and jQuery* by Jon Duckett.
