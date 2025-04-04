@@ -2,21 +2,30 @@
 title: About
 seo:
   title: About Me
-  description: Learn more about the person behind the website and embark on a journey of inspiration and shared experiences.
+  description: Learn more about Mark and his background.
   image:
     src: '/Mark_wearing_vest.jpg'
-    alt: A person sitting at a desk in front of a computer
+    alt: Headshot of Mark Greenwood
 ---
 
 ![Alt text for image](/Mark_wearing_vest.jpg)
 
 ## Mark Greenwood - Software Engineer
 
-**Greetings!** I'm Mark Greenwood, a software engineer living in Portland, OR, USA.
+**Greetings!** I'm Mark Greenwood, a software engineer living in Portland, OR, US.
 
 ## Skills and Expertise
 
-I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly websites. My proficiency includes **HTML**, **CSS**, **JavaScript**, and frameworks such as **Astro.js** for dynamic and interactive user interfaces. On the server side, I'm well-versed in Node.js and have experience with database management systems like MongoDB.
+I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly websites. My proficiency includes:
+- HTML
+- CSS
+- JavaScript
+- Postgres
+- Microservices
+- GraphQL
+- Terraform
+
+Originally, my academic background is electrical engineering, and I spent many years working in chip design and semiconductor manufacturing. So I have a solid understanding of hardware, and how software interacts with it and thereby controls objects in the physical world.
 
 ## Innovation and Problem-Solving
 
@@ -33,6 +42,13 @@ The dynamic nature of the tech industry inspires me to stay up-to-date with the 
 ## Collaboration and Communication
 
 I believe in the power of collaboration and effective communication. Whether working with clients, designers, or fellow developers, I value clear communication to ensure the success of every project.
+
+## Hobbies and Activities
+When I'm not creating awesome software, I might be...
+- running, weightlifting, or cycling
+- playing the electric guitar or bass
+- cooking
+- enjoying a glass of wine or a great cup of coffee
 
 ## Get in Touch
 
