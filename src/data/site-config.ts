@@ -52,18 +52,18 @@ const siteConfig: SiteConfig = {
             text: 'Home',
             href: '/'
         },
-        {
-            text: 'Projects',
-            href: '/projects'
-        },
-        {
-            text: 'Blog',
-            href: '/blog'
-        },
-        {
-            text: 'Tags',
-            href: '/tags'
-        }
+        // {
+        //     text: 'Projects',
+        //     href: '/projects'
+        // },
+        // {
+        //     text: 'Blog',
+        //     href: '/blog'
+        // },
+        // {
+        //     text: 'Tags',
+        //     href: '/tags'
+        // }
     ],
     footerNavLinks: [
         {
@@ -94,7 +94,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Welcome to my musings on all things software engineering...',
+        title: 'Musings on all things software engineering...',
         text: "I'm **Mark Greenwood**, a software engineer promoting energy efficiency and environmental sustainability. Feel free to explore some of my coding endeavors on <a href='https://github.com/markgreenwood'>GitHub</a> or follow me on <a href='https://bsky.app/'>Bluesky</a>.",
         image: {
             src: '/Mark_at_desk.jpg',
