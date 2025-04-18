@@ -95,7 +95,7 @@ const siteConfig: SiteConfig = {
     ],
     hero: {
         title: 'Musings on all things software engineering...',
-        text: "I'm **Mark Greenwood**, a software engineer promoting energy efficiency and environmental sustainability. Feel free to explore some of my coding endeavors on <a href='https://github.com/markgreenwood'>GitHub</a> or follow me on <a href='https://bsky.app/'>Bluesky</a>.",
+        text: "I'm **Mark Greenwood**, a software engineer building tools that support energy efficiency and environmental sustainability. Feel free to explore some of my coding endeavors on <a href='https://github.com/markgreenwood'>GitHub</a> or follow me on <a href='https://bsky.app/'>Bluesky</a>.",
         image: {
             src: '/Mark_at_desk.jpg',
             alt: 'A person sitting at a desk in front of a computer'

@@ -17,14 +17,14 @@ seo:
 
 My original academic background is electrical engineering, and I spent many years 
 working in chip design and semiconductor manufacturing. My specialty was radio frequency and 
-microwave communication, and I produced chips enabling the world's most popular
-mobile devices to communicate with the cell network. I have solid experience making 
-hardware and software interact, thereby controlling objects in the physical world through programming.
+microwave communication, and I produced chips that connect the world's most popular
+mobile devices to the cellular network. I have extensive experience using software 
+to interact with hardware, thereby manipulating objects in the physical world through programming.
 
-In 2016 I decided to "career pivot" into focusing completely on software development, driven by the consistent
+In 2016 I decided to "career pivot" into focusing completely on software development, driven by the
 love of programming I'd had since I was young. To enhance my software background I attended a code school
-to gain immersive experience in designing web applications. Since then I've focused on developing data-intensive applications that
-clients use to pursue energy efficiency and sustainability, helping them save money and reduce their carbon footprint.
+to gain immersive experience in designing web apps. Since then I've focused on developing data-intensive applications
+that help our clients pursue energy efficiency and sustainability goals, saving them money and reducing their carbon footprint.
 
 ## Hobbies and Activities
 When I'm not creating awesome software, I might be...
